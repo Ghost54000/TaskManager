@@ -19,6 +19,7 @@ describe('EditTask', () => {
             data: {
                 title: 'Ancien titre',
                 description: 'Ancienne description',
+                status: 'done',
             },
         });
         patch.mockResolvedValue({});
@@ -39,6 +40,9 @@ describe('EditTask', () => {
         fireEvent.change(screen.getByDisplayValue('Ancienne description'), {
             target: { value: 'Nouvelle description' },
         });
+        fireEvent.change(screen.getByDisplayValue('Terminée'), {
+            target: { value: 'todo' },
+        });
         fireEvent.click(screen.getByText('Modifier'));
 
         await waitFor(() => {
@@ -46,6 +50,7 @@ describe('EditTask', () => {
             expect(patch).toHaveBeenCalledWith('tasks/4', {
                 title: 'Nouveau titre',
                 description: 'Nouvelle description',
+                status: 'todo',
             });
             expect(screen.getByText('Tasks page')).toBeInTheDocument();
         });

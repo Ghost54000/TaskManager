@@ -8,12 +8,14 @@ export default function EditTask() {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [status, setStatus] = useState('todo');
     const [error, setError] = useState(false);
 
     useEffect(() => {
         get('tasks/' + id).then(result => {
             setTitle(result.data.title);
             setDescription(result.data.description);
+            setStatus(result.data.status || 'todo');
         }).catch(err => {
             console.log(err);
             setError(true);
@@ -28,7 +30,8 @@ export default function EditTask() {
         try {
             await patch('tasks/' + id, {
                 title,
-                description
+                description,
+                status
             });
             setError(false);
             navigate('/tasks');
@@ -47,6 +50,10 @@ export default function EditTask() {
                 <textarea className="w-full rounded-lg border border-white px-3 py-2" placeholder="Description de la tache" value={description} onChange={(e) => setDescription(e.target.value)} required>
 
                 </textarea>
+                <select className="w-full rounded-lg border border-white px-3 py-2" value={status} onChange={(e) => setStatus(e.target.value)}>
+                    <option value="todo">À faire</option>
+                    <option value="done">Terminée</option>
+                </select>
                 <button className="rounded-lg bg-blue-500 px-4 py-2 text-white">Modifier</button>
             </form>
         </>
