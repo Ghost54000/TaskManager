@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "email": "benoit.romeo@gmail.com",
+      "password": "$2a$10$1TIXTaPH6.eSd0D8X1gdL.i242Ucbs4oVBMIeFNcS3InaUPGwXYyi",
+      "id": 1
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Apprendre à utiliser React",
+      "description": "Bases de React",
+      "status": "todo"
+    },
+    {
+      "id": 2,
+      "title": "Apprendre à utiliser React",
+      "description": "React avancé",
+      "status": "todo"
+    },
+    {
+      "id": 3,
+      "title": "Apprendre à utiliser Node",
+      "description": "Bases de Node JS + Node avancé",
+      "status": "done"
+    },
+    {
+      "id": 4,
+      "title": "Gestion avancée des routes",
+      "description": "Routes + sécurisation",
+      "status": "todo"
+    },
+    {
+      "title": "Création d'une tache",
+      "description": "Test de création d'une tache avec un formulaire 2",
+      "status": "todo",
+      "id": 5
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
